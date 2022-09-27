@@ -5,9 +5,10 @@ var titleEl = document.querySelector("#movie-title");
 var plotEl = document.querySelector("#movie-plot");
 var infoEl = document.querySelector("#more-info");
 generateBtnEl.addEventListener("click", randomMovie);
+var movieApi = "k_gheb3jf8";
 
 function randomMovie() {
-  var movieUrl = "https://imdb-api.com/en/API/Top250Movies/k_rljzd128";
+  var movieUrl = "https://imdb-api.com/en/API/Top250Movies/" + movieApi;
 
   fetch(movieUrl)
     .then(function (response) {
@@ -30,7 +31,9 @@ function randomMovie() {
 
 function getMovie(movieId) {
   var movieUrl =
-    "https://imdb-api.com/en/API/Title/k_rljzd128/" +
+    "https://imdb-api.com/en/API/Title/" +
+    movieApi +
+    "/" +
     movieId +
     "/FullActor,Posters";
   fetch(movieUrl)
@@ -48,9 +51,46 @@ function getMovie(movieId) {
       alert("unable to connect to the movieAPI");
     });
 }
-function renderMovieInfo(movieInfo){
-var img = document.createElement("img");
-img.src= movieInfo.image;
-imageEl.appendChild(img);
+
+function renderMovieInfo(movieInfo) {
+  //to show image
+  var img = document.createElement("img");
+  img.src = movieInfo.image;
+  imageEl.appendChild(img);
+
+  //to show Movie Title
+  var title = document.createElement("h2");
+  title.innerHTML = "<strong>" + movieInfo.fullTitle + "</strong>";
+  titleEl.appendChild(title);
+
+  //to show summary plot
+  var summary = document.createElement("p");
+  summary.innerHTML = "Summary: " + movieInfo.plot;
+  plotEl.appendChild(summary);
+
+  //to show directors of the movie
+  var directors = document.createElement("p");
+  directors.innerHTML = "Directors: " + movieInfo.directors;
+  infoEl.appendChild(directors);
+
+  //to show directors of the movie
+  var awards = document.createElement("p");
+  awards.innerHTML = "Awards: " + movieInfo.awards;
+  infoEl.appendChild(awards);
+
+  //to show directors of the movie
+  var runTime = document.createElement("p");
+  runTime.innerHTML = "Run Time: " + movieInfo.runtimeStr;
+  infoEl.appendChild(runTime);
+
+  var movieLink = document.createElement("a");
+  movieLink.setAttribute(
+    "href",
+    "./movie-info.html?movieId=" +
+      movieInfo.id +
+      "?movietitle=" +
+      movieInfo.fullTitle
+  );
+  movieLink.innerHTML = "Click here for Streaming Info";
+  infoEl.appendChild(movieLink);
 }
-randomMovie();
