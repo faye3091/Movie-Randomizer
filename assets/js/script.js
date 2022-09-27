@@ -1,5 +1,9 @@
 var generateBtnEl = document.querySelector("#generateBtn");
+var imageEl = document.querySelector("#movie-image");
 
+var titleEl = document.querySelector("#movie-title");
+var plotEl = document.querySelector("#movie-plot");
+var infoEl = document.querySelector("#more-info");
 generateBtnEl.addEventListener("click", randomMovie);
 
 function randomMovie() {
@@ -34,6 +38,7 @@ function getMovie(movieId) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          renderMovieInfo(data);
         });
       } else {
         alert("error id");
@@ -42,5 +47,10 @@ function getMovie(movieId) {
     .catch(function (error) {
       alert("unable to connect to the movieAPI");
     });
+}
+function renderMovieInfo(movieInfo){
+var img = document.createElement("img");
+img.src= movieInfo.image;
+imageEl.appendChild(img);
 }
 randomMovie();
