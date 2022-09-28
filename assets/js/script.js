@@ -84,13 +84,14 @@ function renderMovieInfo(movieInfo) {
   infoEl.appendChild(runTime);
 
   var movieLink = document.createElement("a");
-  movieLink.setAttribute(
-    "href",
+  movieLink.setAttribute("href", "./movie-info.html?movieId=" + movieInfo.id);
+  movieLink.innerHTML = "Click here for Streaming Info";
+  infoEl.appendChild(movieLink);
+}
+
+/*
     "./movie-info.html?movieId=" +
       movieInfo.id +
       "?movietitle=" +
       movieInfo.fullTitle
-  );
-  movieLink.innerHTML = "Click here for Streaming Info";
-  infoEl.appendChild(movieLink);
-}
+      */
