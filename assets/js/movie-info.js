@@ -4,12 +4,13 @@ var movieTitleEl = document.querySelector("#movie-title");
 function getmovieId () {
     
     // This is coming from the URL search bar in the browser. It is what comes after the `?`.
-    //"./movie-info.html?movieId=" + movieInfo.id +  "?movietitle=" + movieInfo.fullTitle"
     
-    var queryString = document.location.search;
-    var movieId = queryString.split('=')[1];
-    //var movieTitle = queryString.split('=')[2];
-   // movieTitleEl.innerHTML = movieTitle;
+    const params = new URLSearchParams(document.location.search);
+    const movieId = params.get("movieId");
+    const movieTitle = params.get("movietitle");
+    console.log("movie id = ", movieId);
+    console.log("movie title = " + movieTitle);
+    movieTitleEl.innerHTML = movieTitle;
 
   
     if (movieId) {
@@ -25,8 +26,7 @@ function getmovieId () {
   function getmovieWatchInfo(id) {
     
     var apiUrl = "https://api.watchmode.com/v1/title/" + id + "/sources/?apiKey=ZqhSD2vFtLVlH11SqKHryG520s5TtBvCjaf4sNLR";
-    console.log(apiUrl);
-
+    
     fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
@@ -44,6 +44,7 @@ function getmovieId () {
 
   }
 
+  //Create and render the elements
   function renderMovieWatchInfo(watchInfo){
     // create and render the elements
     for (var i = 0; i < watchInfo.length; i++){

@@ -5,7 +5,7 @@ var titleEl = document.querySelector("#movie-title");
 var plotEl = document.querySelector("#movie-plot");
 var infoEl = document.querySelector("#more-info");
 generateBtnEl.addEventListener("click", randomMovie);
-var movieApi = "k_gheb3jf8";
+var movieApi = "k_rljzd128";
 
 function randomMovie() {
   var movieUrl = "https://imdb-api.com/en/API/Top250Movies/" + movieApi;
@@ -83,15 +83,14 @@ function renderMovieInfo(movieInfo) {
   runTime.innerHTML = "Run Time: " + movieInfo.runtimeStr;
   infoEl.appendChild(runTime);
 
+   // Create the link element to link to movie-info html page
   var movieLink = document.createElement("a");
-  movieLink.setAttribute("href", "./movie-info.html?movieId=" + movieInfo.id);
+  movieLink.setAttribute("href",
+   "./movie-info.html?movieId=" + 
+   movieInfo.id + 
+   "&movietitle=" + 
+   movieInfo.fullTitle);
   movieLink.innerHTML = "Click here for Streaming Info";
   infoEl.appendChild(movieLink);
 }
 
-/*
-    "./movie-info.html?movieId=" +
-      movieInfo.id +
-      "?movietitle=" +
-      movieInfo.fullTitle
-      */
