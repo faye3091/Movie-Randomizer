@@ -12,16 +12,13 @@ function getmovieId () {
     console.log("movie title = " + movieTitle);
     movieTitleEl.innerHTML = movieTitle;
 
-  
-    if (movieId) {
-      
-      getmovieWatchInfo(movieId);
-
-    } else {
-      // This will run and return to the homepage if there was nothing in the URL query parameter.
-      document.location.replace('./index.html');
-    }
-  };
+  if (movieId) {
+    getmovieWatchInfo(movieId);
+  } else {
+    // This will run and return to the homepage if there was nothing in the URL query parameter.
+    document.location.replace("./index.html");
+  }
+}
 
   function getmovieWatchInfo(id) {
     
@@ -41,8 +38,7 @@ function getmovieId () {
     .catch(function (error) {
       alert("unable to connect to watchmode api");
     });
-
-  }
+}
 
   //Create and render the elements
   function renderMovieWatchInfo(watchInfo){
@@ -58,22 +54,28 @@ function getmovieId () {
         nameEl.innerHTML = watchInfo[i].name;
         divEl.appendChild(nameEl);
 
-        // Create the  element to hold web_url
-        var webUrlEl = document.createElement("a");
-        webUrlEl.setAttribute("href", watchInfo[i].web_url);
-        webUrlEl.innerHTML = watchInfo[i].web_url;
-        divEl.appendChild(webUrlEl);
+    // Create name element for the sub div
+    var nameEl = document.createElement("p");
+    nameEl.innerHTML = watchInfo[i].name;
+    divEl.appendChild(nameEl);
 
-        // Create the element to hold the format
-        var formatEl = document.createElement('p');
-        formatEl.innerHTML = watchInfo[i].format;
-        divEl.appendChild(formatEl);
+    // Create the  element to hold web_url
+    var webUrlEl = document.createElement("a");
+    webUrlEl.setAttribute("href", watchInfo[i].web_url);
+    webUrlEl.innerHTML = watchInfo[i].web_url;
+    divEl.appendChild(webUrlEl);
 
-        //
-        watchInfoEl.appendChild(divEl);
+    // Create the element to hold the format
+    var formatEl = document.createElement("p");
+    formatEl.innerHTML = "Format: " + watchInfo[i].format;
+    divEl.appendChild(formatEl);
 
-    }
+    //
+    watchInfoEl.appendChild(divEl);
 
+    var justTitle = document.createElement("h1");
+    justTitle.innerHTML = watchInfo[i].title;
   }
+}
 
 getmovieId();
