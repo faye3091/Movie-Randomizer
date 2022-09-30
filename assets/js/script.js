@@ -76,6 +76,10 @@ function randomMovie() {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          document.querySelector("#movie-image").innerHTML = "";
+          document.querySelector("#movie-title").innerHTML = "";
+          document.querySelector("#movie-plot").innerHTML = "";
+          document.querySelector("#more-info").innerHTML = "";
           var randomIndex = Math.floor(Math.random() * data.items.length);
           console.log(data.items[randomIndex].id);
           var movieId = data.items[randomIndex].id;
@@ -146,13 +150,15 @@ function renderMovieInfo(movieInfo) {
   runTime.innerHTML = "Run Time: " + movieInfo.runtimeStr;
   infoEl.appendChild(runTime);
 
-   // Create the link element to link to movie-info html page
+  // Create the link element to link to movie-info html page
   var movieLink = document.createElement("a");
-  movieLink.setAttribute("href",
-   "./movie-info.html?movieId=" + 
-   movieInfo.id + 
-   "&movietitle=" + 
-   movieInfo.fullTitle);
+  movieLink.setAttribute(
+    "href",
+    "./movie-info.html?movieId=" +
+      movieInfo.id +
+      "&movietitle=" +
+      movieInfo.fullTitle
+  );
   movieLink.innerHTML = "Click here for Streaming Info";
   infoEl.appendChild(movieLink);
   movieMoreInfo.style.display = "block";
