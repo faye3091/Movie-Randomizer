@@ -13,6 +13,7 @@ body {
   font-size: larger;
 }
 
+
 img {
   width: 400px;
   height: 500px;
@@ -68,6 +69,7 @@ p {
   border-radius: 1rem;
 }
 
+
 .movie-info {
   width: 65%;
   margin: 20px;
@@ -110,7 +112,12 @@ p {
   margin: 20px;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 980px) {
+  .header-two {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
   .header{
     font-size: 35px;
   }
@@ -124,5 +131,6 @@ p {
     height: 400px;
     width: 300px;
   }
+  
   
 }
