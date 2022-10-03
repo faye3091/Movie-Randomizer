@@ -151,12 +151,19 @@ p {
     flex-wrap: wrap;
     flex-direction: column;
   }
-  .header {
+
+
+  .header{
     font-size: 35px;
   }
+
+  .btn{
+    width: 200px;
+    font-size: 20px;
 
   img {
     height: 400px;
     width: 300px;
   }
+
 }
