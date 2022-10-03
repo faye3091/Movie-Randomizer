@@ -10,7 +10,7 @@ Our motivation for this project was to make a fun way to pick a movie when you a
 ![Screenshot](assets/images/Screenshot1.png)
 ![Screenshot](assets/images/Screenshot2.png)
 
-[Link to our Randomizer](https://faye3091.github.io/Project1-group1/)
+[Link to our Randomizer](https://faye3091.github.io/Movie-Randomizer/)
 
 
 ## Credits
